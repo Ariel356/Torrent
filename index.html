@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Torrent - Résultats Officiels 2026</title>
+    <title>La Torrent - Vérification des Résultats</title>
     <style>
         /* Configuration générale */
         body, html {
@@ -11,145 +11,126 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #050505; /* Fond sombre pour contraste */
+            background-color: #050505;
         }
 
-        /* Nouveau Canvas d'Animation */
         #bg-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             z-index: 1;
         }
 
-        /* Conteneur principal */
         .main-content {
             position: relative;
             z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px;
+            justify-content: center;
+            padding: 20px;
             min-height: 100vh;
-            background: rgba(0, 0, 0, 0.2); 
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        /* Header */
         .header {
             text-align: center;
             color: #ffffff;
-            margin-bottom: 40px;
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
         }
 
         .header h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        .header p {
-            font-size: 1.1em;
+            font-size: 2.5em;
+            margin: 0;
+            letter-spacing: 5px;
             color: #2ecc71;
-            font-weight: bold;
-            letter-spacing: 1px;
         }
 
-        /* Carte des résultats */
-        .results-card {
-            background: rgba(255, 255, 255, 0.98);
-            width: 100%;
-            max-width: 900px;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            padding: 35px;
-            border-top: 10px solid #27ae60;
-            animation: slideUp 1s ease-out;
-        }
-
-        .card-title {
-            text-align: center;
-            color: #2c3e50;
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 15px;
-            font-weight: 800;
-        }
-
-        /* Tableau */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background-color: #27ae60;
-            color: white;
-            padding: 18px 15px;
-            text-align: left;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            letter-spacing: 1px;
-        }
-
-        td {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            color: #2c3e50;
-            font-weight: 500;
-        }
-
-        tr:hover {
-            background-color: #f4fff7;
-        }
-
-        .status-badge {
-            background-color: #2ecc71;
-            color: white;
-            padding: 6px 14px;
+        /* Boîte de recherche */
+        .search-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
             border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            border-bottom: 8px solid #27ae60;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        h2 { color: #2c3e50; margin-bottom: 20px; font-size: 1.2em; }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border 0.3s;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2ecc71;
+        }
+
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1em;
             font-weight: bold;
-            font-size: 0.8em;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(46, 204, 113, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
         }
 
-        .status-badge::after {
-            content: ' ✓';
-            margin-left: 5px;
+        button:hover {
+            background: #2ecc71;
+            transform: scale(1.05);
         }
 
-        /* Footer */
+        /* Zone de résultat */
+        #result-area {
+            margin-top: 30px;
+            min-height: 100px;
+            width: 100%;
+        }
+
+        .status-card {
+            padding: 20px;
+            border-radius: 15px;
+            animation: fadeIn 0.5s;
+        }
+
+        .admitted {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .not-found {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
         .footer {
             margin-top: 40px;
-            text-align: center;
             color: white;
-            font-size: 0.95em;
-            line-height: 1.8;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-size: 0.8em;
+            text-align: center;
+            opacity: 0.7;
         }
 
-        .footer b {
-            color: #2ecc71;
-            font-size: 1.1em;
-        }
-
-        /* Animations */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            .results-card { padding: 15px; }
-            th, td { padding: 10px 8px; font-size: 0.75em; }
-            .header h1 { font-size: 1.8em; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -159,143 +140,123 @@
     <div class="main-content">
         <div class="header">
             <h1>LA TORRENT</h1>
-            <p>RÉSULTATS D'ADMISSION OFFICIELS (SESSION 2026)</p>
-            <span style="color: rgba(255,255,255,0.8); font-size: 0.85em; text-transform: uppercase;">Validation finale du comité technique</span>
+            <p>PORTAIL DE VÉRIFICATION 2026</p>
         </div>
 
-        <div class="results-card">
-            <div class="card-title">CANDIDATS RETENUS POUR LA PROMOTION</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rang</th>
-                        <th>Nom Complet</th>
-                        <th>Poste</th>
-                        <th>Statut</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>N'guessan Arnold</td>
-                        <td>Programmeur</td>
-                        <td><span class="status-badge">ADMIS</span></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Diomande souleman</td>
-                        <td>Programmeur</td>
-                        <td><span class="status-badge">ADMIS</span></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Kevin Yao</td>
-                        <td>Programmeur</td>
-                        <td><span class="status-badge">ADMIS</span></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Christ Béni</td>
-                        <td>Infographe</td>
-                        <td><span class="status-badge">ADMIS</span></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Kouassi Heliana</td>
-                        <td>Vidéographe</td>
-                        <td><span class="status-badge">ADMIS</span></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="text-align: center; color: #95a5a6; font-size: 0.9em; font-style: italic; margin-top: 25px;">Système d'admission mis à jour : 2026.05.07</p>
+        <div class="search-container">
+            <h2>Vérifiez votre statut d'admission</h2>
+            <input type="text" id="nameInput" placeholder="Entrez votre nom ou prénom..." onkeypress="handleKeyPress(event)">
+            <br>
+            <button onclick="checkAdmission()">VÉRIFIER LE SYSTÈME</button>
+
+            <div id="result-area">
+                <!-- Les résultats s'afficheront ici -->
+            </div>
         </div>
 
         <div class="footer">
-            <b>Bienvenue dans l'aventure La Torrent !</b><br>
-            © 2026 La Torrent - L'excellence informatique.
+            © 2026 La Torrent - Protocole de sélection sécurisé.
         </div>
     </div>
 
     <script>
-        /**
-         * Animation de Réseau de Particules (Tech Nodes)
-         */
+        // LA BASE DE DONNÉES DES ADMIS
+        const admittedList = [
+            { name: "N'guessan Arnold", role: "Programmeur" },
+            { name: "Diomande souleman", role: "Programmeur" },
+            { name: "Kevin Yao", role: "Programmeur" },
+            { name: "Christ Béni", role: "Infographe" },
+            { name: "Kouassi Heliana", role: "Vidéographe" }
+        ];
+
+        function handleKeyPress(e) {
+            if (e.keyCode === 13) { checkAdmission(); }
+        }
+
+        function checkAdmission() {
+            const input = document.getElementById('nameInput').value.toLowerCase().trim();
+            const resultArea = document.getElementById('result-area');
+            
+            if (input === "") {
+                resultArea.innerHTML = "<p style='color:#e67e22'>Veuillez entrer un nom.</p>";
+                return;
+            }
+
+            // Animation de "chargement"
+            resultArea.innerHTML = "<p style='color:#2ecc71'>Analyse du flux en cours...</p>";
+
+            setTimeout(() => {
+                const candidate = admittedList.find(c => 
+                    c.name.toLowerCase().includes(input)
+                );
+
+                if (candidate) {
+                    resultArea.innerHTML = `
+                        <div class="status-card admitted">
+                            <h3 style="margin:0">FÉLICITATIONS !</h3>
+                            <p><b>${candidate.name}</b>, vous êtes admis(e) en tant que <b>${candidate.role}</b>.</p>
+                            <p style="font-size:0.8em">Bienvenue dans La Torrent.</p>
+                        </div>
+                    `;
+                } else {
+                    resultArea.innerHTML = `
+                        <div class="status-card not-found">
+                            <h3 style="margin:0">AUCUN RÉSULTAT</h3>
+                            <p>Le nom "<b>${input}</b>" ne figure pas dans la liste des admis.</p>
+                        </div>
+                    `;
+                }
+            }, 800);
+        }
+
+        // --- ANIMATION DE FOND (Nodes) ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 80;
-        const connectionDistance = 150;
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        });
 
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() - 0.5) * 0.8;
-                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
             }
-
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x > canvas.width) this.x = 0;
-                else if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                else if (this.y < 0) this.y = canvas.height;
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
             }
-
             draw() {
-                ctx.fillStyle = 'rgba(46, 204, 113, 0.8)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = 'rgba(46, 204, 113, 0.5)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fill();
             }
         }
 
         function init() {
             particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < 70; i++) { particles.push(new Particle()); }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.strokeStyle = `rgba(46, 204, 113, ${1 - distance/connectionDistance})`;
+            particles.forEach((p, index) => {
+                p.update(); p.draw();
+                for (let j = index; j < particles.length; j++) {
+                    const dx = p.x - particles[j].x;
+                    const dy = p.y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 120) {
+                        ctx.strokeStyle = `rgba(46, 204, 113, ${1 - dist/120})`;
                         ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
                     }
                 }
-            }
+            });
             requestAnimationFrame(animate);
         }
-
-        init();
-        animate();
+        init(); animate();
     </script>
 </body>
 </html>
