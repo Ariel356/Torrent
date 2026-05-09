@@ -3,134 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torrent - Vérification des Résultats</title>
+    <title>La Torrent - Validation Officielle</title>
     <style>
-        /* Configuration générale */
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            overflow: hidden; font-family: 'Segoe UI', Tahoma, sans-serif;
             background-color: #050505;
         }
 
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            z-index: 1;
-        }
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: 1; }
 
         .main-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            min-height: 100vh;
-            background: rgba(0, 0, 0, 0.3);
+            position: relative; z-index: 2;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 20px; min-height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
         }
 
-        .header {
-            text-align: center;
-            color: #ffffff;
-            margin-bottom: 30px;
-            animation: fadeIn 1s ease-out;
-        }
+        .header { text-align: center; color: #ffffff; margin-bottom: 30px; }
+        .header h1 { font-size: 2.8em; margin: 0; letter-spacing: 6px; color: #2ecc71; }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin: 0;
-            letter-spacing: 5px;
-            color: #2ecc71;
-        }
-
-        /* Boîte de recherche */
         .search-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px 40px; border-radius: 20px;
+            box-shadow: 0 20px 70px rgba(0,0,0,0.8);
+            width: 100%; max-width: 550px; text-align: center;
             border-bottom: 8px solid #27ae60;
             animation: slideUp 0.8s ease-out;
         }
 
-        h2 { color: #2c3e50; margin-bottom: 20px; font-size: 1.2em; }
-
         input[type="text"] {
-            width: 80%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            outline: none;
-            transition: border 0.3s;
-            text-align: center;
+            width: 85%; padding: 18px; border: 2px solid #ddd;
+            border-radius: 12px; font-size: 1.1em; margin-bottom: 25px;
+            outline: none; text-align: center;
         }
 
-        input[type="text"]:focus {
-            border-color: #2ecc71;
-        }
+        input[type="text"]:focus { border-color: #2ecc71; }
 
         button {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
+            background: #27ae60; color: white; border: none;
+            padding: 18px 40px; border-radius: 12px;
+            font-size: 1em; font-weight: bold; cursor: pointer;
+            transition: 0.3s;
         }
 
-        button:hover {
-            background: #2ecc71;
-            transform: scale(1.05);
-        }
+        button:hover { background: #2ecc71; transform: scale(1.03); }
 
-        /* Zone de résultat */
-        #result-area {
-            margin-top: 30px;
-            min-height: 100px;
-            width: 100%;
-        }
+        #result-area { margin-top: 35px; min-height: 120px; }
 
-        .status-card {
-            padding: 20px;
-            border-radius: 15px;
-            animation: fadeIn 0.5s;
-        }
-
-        .admitted {
-            background: #d4edda;
-            color: #155724;
-            border: 2px solid #c3e6cb;
-        }
-
-        .not-found {
-            background: #f8d7da;
-            color: #721c24;
-            border: 2px solid #f5c6cb;
-        }
-
-        .footer {
-            margin-top: 40px;
-            color: white;
-            font-size: 0.8em;
-            text-align: center;
-            opacity: 0.7;
-        }
+        .status-card { padding: 25px; border-radius: 15px; animation: fadeIn 0.5s; }
+        .admitted { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .not-found { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -139,105 +66,97 @@
 
     <div class="main-content">
         <div class="header">
-            <h1>TORRENT</h1>
-            <p>PORTAIL DE VÉRIFICATION 2026</p>
+            <h1>LA TORRENT</h1>
+            <p style="letter-spacing: 2px;">VÉRIFICATION D'ADMISSION</p>
         </div>
 
         <div class="search-container">
-            <h2>Vérifiez votre statut d'admission</h2>
-            <input type="text" id="nameInput" placeholder="Entrez votre nom ou prénom..." onkeypress="handleKeyPress(event)">
+            <h2 style="color:#2c3e50">Portail de Recherche</h2>
+            <input type="text" id="nameInput" placeholder="Entrez votre nom ou votre prénom..." onkeypress="if(event.keyCode==13) checkAdmission()">
             <br>
-            <button onclick="checkAdmission()">VÉRIFIER LE SYSTÈME</button>
+            <button onclick="checkAdmission()">LANCER LA RECHERCHE</button>
 
-            <div id="result-area">
-                <!-- Les résultats s'afficheront ici -->
-            </div>
-        </div>
-
-        <div class="footer">
-            © 2026 Torrent - Protocole de sélection sécurisé.
+            <div id="result-area"></div>
         </div>
     </div>
 
     <script>
-        // LA BASE DE DONNÉES DES ADMIS
         const admittedList = [
             { name: "N'guessan Arnold Christ Enoc", role: "Programmeur" },
-            { name: "Diomande souleman", role: "Programmeur" },
-            { name: "Mohamed Coulibaly", role: "Programmeur"},
+            { name: "Diomande souleymane", role: "Programmeur" },
+            { name: "Coulibaly Mohamed", role: "Programmeur"},
             { name: "Lingani Salif Junior", role: "Infographie" },
             { name: "Yao Christ Béni", role: "Infographe" },
             { name: "Ouattara Monia", role: "Vidéographe" },
         ];
-
-        function handleKeyPress(e) {
-            if (e.keyCode === 13) { checkAdmission(); }
-        }
-
         function checkAdmission() {
-            const input = document.getElementById('nameInput').value.toLowerCase().trim();
+            const rawInput = document.getElementById('nameInput').value.trim().toLowerCase();
             const resultArea = document.getElementById('result-area');
             
-            if (input === "") {
-                resultArea.innerHTML = "<p style='color:#e67e22'>Veuillez entrer un nom.</p>";
+            if (rawInput === "") {
+                resultArea.innerHTML = "<p style='color:#e67e22'>Veuillez saisir une information.</p>";
                 return;
             }
 
-            // Animation de "chargement"
-            resultArea.innerHTML = "<p style='color:#2ecc71'>Analyse du flux en cours...</p>";
+            resultArea.innerHTML = "<p style='color:#2ecc71'>Scannage des registres...</p>";
 
             setTimeout(() => {
-                const candidate = admittedList.find(c => 
-                    c.name.toLowerCase().includes(input)
-                );
+                // On transforme la saisie en tableau de mots
+                const inputWords = rawInput.split(/\s+/);
+
+                const candidate = admittedList.find(dbCandidate => {
+                    // On transforme le nom complet de la BDD en tableau de mots
+                    const dbNameWords = dbCandidate.name.toLowerCase().split(/\s+/);
+                    
+                    // Vérification : TOUS les mots tapés par l'utilisateur 
+                    // doivent correspondre EXACTEMENT à l'un des mots de la BDD
+                    return inputWords.every(word => dbNameWords.includes(word));
+                });
 
                 if (candidate) {
                     resultArea.innerHTML = `
                         <div class="status-card admitted">
-                            <h3 style="margin:0">FÉLICITATIONS !</h3>
-                            <p><b>${candidate.name}</b>, vous êtes admis(e) en tant que <b>${candidate.role}</b>.</p>
-                            <p style="font-size:0.8em">Bienvenue dans La Torrent.</p>
-                        </div>
-                    `;
+                            <h3>RÉSULTAT POSITIF</h3>
+                            <p>Félicitations <b>${candidate.name}</b> !</p>
+                            <p>Vous rejoignez l'équipe en tant que <b>${candidate.role}</b>.</p>
+                        </div>`;
                 } else {
                     resultArea.innerHTML = `
                         <div class="status-card not-found">
-                            <h3 style="margin:0">AUCUN RÉSULTAT</h3>
-                            <p>Le nom "<b>${input}</b>" ne figure pas dans la liste des admis.</p>
-                        </div>
-                    `;
+                            <h3>AUCUNE CORRESPONDANCE</h3>
+                            <p>Le nom "<b>${rawInput}</b>" ne figure pas dans la liste des admis.</p>
+                        </div>`;
                 }
-            }, 800);
+            }, 600);
         }
 
-        // --- ANIMATION DE FOND (Nodes) ---
+        // --- ANIMATION RESEAU ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.vX = (Math.random() - 0.5) * 0.5;
+                this.vY = (Math.random() - 0.5) * 0.5;
             }
             update() {
-                this.x += this.speedX; this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
+                this.x += this.vX; this.y += this.vY;
+                if (this.x > canvas.width || this.x < 0) this.vX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.vY *= -1;
             }
             draw() {
-                ctx.fillStyle = 'rgba(46, 204, 113, 0.5)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = 'rgba(46, 204, 113, 0.4)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2); ctx.fill();
             }
         }
 
         function init() {
             particles = [];
-            for (let i = 0; i < 70; i++) { particles.push(new Particle()); }
+            for (let i = 0; i < 80; i++) particles.push(new Particle());
         }
 
         function animate() {
